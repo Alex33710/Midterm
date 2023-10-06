@@ -9,12 +9,9 @@ public class PlayerFire : MonoBehaviour
     public float bulletSpeed;
     public float fireRate = 10;
     private float BaseFireRate;
-    public Renderer mr;
+    public GameObject RedPlayer, GreenPlayer, BluePlayer;
     public float colorCount;
-    //public GameObject Parent = GameObject.Find("GreenPlayer");
-    //public int x;
-    public GameObject Nozzle;
-    public GameObject Cube;
+    
 
     void Start()
     {
@@ -31,7 +28,7 @@ public class PlayerFire : MonoBehaviour
         }
         if (Input.GetButtonDown("Fire1"))
         {
-            changeColor();
+            ChangeColor();
         }
 
     }
@@ -44,30 +41,26 @@ public class PlayerFire : MonoBehaviour
         fireRate = BaseFireRate;
     }
 
-    void changeColor()
+    void ChangeColor()
     {
         colorCount++;
-        mr = GetComponent<Renderer>();
         if (colorCount % 3 == 0)
          {
-            mr.material.color = Color.red;
-            Rigidbody Cube = Cube.GetComponent<Renderer>().material.color = Color.red;
-            Nozzle.GetComponent<Renderer>().material.color = Color.red;
-
+           RedPlayer.SetActive(true);
+           GreenPlayer.SetActive(false);
+           BluePlayer.SetActive(false);
         }
         else if (colorCount % 3 == 1)
         {
-            mr.material.color = Color.green;
-            Cube.GetComponent<Renderer>().material.color = Color.green;
-            Nozzle.GetComponent<Renderer>().material.color = Color.green;
-
+            RedPlayer.SetActive(false);
+            GreenPlayer.SetActive(true);
+            BluePlayer.SetActive(false);
         }
-        else
+        else 
         {
-            mr.material.color = Color.blue;
-            Cube.GetComponent<Renderer>().material.color = Color.blue;
-            Nozzle.GetComponent<Renderer>().material.color = Color.blue;
-
+            RedPlayer.SetActive(false);
+            GreenPlayer.SetActive(false);
+            BluePlayer.SetActive(true);
         }
     }
 

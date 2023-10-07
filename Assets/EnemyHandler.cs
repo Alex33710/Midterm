@@ -24,7 +24,7 @@ public class NewBehaviourScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        EnemyMove();
+        //EnemyMove();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -61,9 +61,10 @@ public class NewBehaviourScript : MonoBehaviour
                 break;
         }
     }
-    void EnemyMove()
-    {
-        var step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.Player.position, step);
-    }
+    //void EnemyMove()
+    //{
+        //var step = speed * Time.deltaTime;
+        //transform.position = Vector3.MoveTowards(transform.position, GameManager.Instance.player.position, step);
+    //}
 }
+

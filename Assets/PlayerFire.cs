@@ -11,10 +11,14 @@ public class PlayerFire : MonoBehaviour
     private float BaseFireRate;
     public GameObject RedPlayer, GreenPlayer, BluePlayer;
     public float colorCount;
-    
+    public Transform target;
+    public float rotateSpeed;
 
     void Start()
     {
+        RedPlayer.SetActive(true);
+        BluePlayer.SetActive(false);
+        GreenPlayer.SetActive(false);
         BaseFireRate = fireRate;
         colorCount = 0;
     }
@@ -29,6 +33,11 @@ public class PlayerFire : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             ChangeColor();
+        }
+
+        if (Input.GetKey("a"))
+        {
+            playerRotate();
         }
 
     }
@@ -64,5 +73,10 @@ public class PlayerFire : MonoBehaviour
         }
     }
 
-    
+    void playerRotate()
+    {
+        //Vector3 relativePos = transform.position - target.transform.position;
+        var step = rotateSpeed * Time.deltaTime;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, target.rotation, step);
+    }
 }
